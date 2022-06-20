@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EjercicioEnClase</string>
+    <string name="TextoCicloVida">Ejemplo de ciclo de vida de una actividad</string>
 </resources>

@@ -10,8 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import java.util.*
 
-
-
 class MainActivity : AppCompatActivity() {
     lateinit var textViewUsuario: TextView
     lateinit var textViewContador: TextView
@@ -110,4 +108,3 @@ class MainActivity : AppCompatActivity() {
         inicializarCuentaRegresiva()
     }
 }
-

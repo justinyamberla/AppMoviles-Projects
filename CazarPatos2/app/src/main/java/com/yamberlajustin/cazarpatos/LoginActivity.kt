@@ -9,25 +9,31 @@ import android.widget.CheckBox
 import android.widget.EditText
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var manejadorArchivo: FileHandler
+    lateinit var manejadorArchivo: FileHandler //Lab04
+    lateinit var checkBoxRecordarme: CheckBox //Lab04
     lateinit var editTextEmail: EditText
     lateinit var editTextPassword:EditText
     lateinit var buttonLogin: Button
     lateinit var buttonNewUser:Button
-    lateinit var checkBoxRecordarme: CheckBox
     lateinit var mediaPlayer: MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        //Inicialización de variables
-        manejadorArchivo = SharedPreferencesManager(this)
+
+        /*Inicialización de variables*/
+
+        //manejadorArchivo = EncryptedSharedPreferencesManager(this) //Lab 04 - Encriptación
+        //manejadorArchivo = SharedPreferencesManager(this) //Lab 04 - Normal
+        manejadorArchivo = FileExternalManager(this) //Lab 04 - Almacenamiento Externo
+
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
         buttonNewUser = findViewById(R.id.buttonNewUser)
-        checkBoxRecordarme = findViewById(R.id.checkBoxRecordarme)
+        checkBoxRecordarme = findViewById(R.id.checkBoxRecordarme) //lab 04
 
-        LeerDatosDePreferencias()
+        LeerDatosDePreferencias() //Lab 04
 
         //Eventos clic
         buttonLogin.setOnClickListener {
@@ -36,8 +42,9 @@ class LoginActivity : AppCompatActivity() {
             //Validaciones de datos requeridos y formatos
             if(!ValidarDatosRequeridos())
                 return@setOnClickListener
+
             //Guardar datos en preferencias.
-            GuardarDatosEnPreferencias()
+            GuardarDatosEnPreferencias() //Lab 04
 
             //Si pasa validación de datos requeridos, ir a pantalla principal
             val intencion = Intent(this, MainActivity::class.java)
@@ -50,30 +57,6 @@ class LoginActivity : AppCompatActivity() {
         mediaPlayer=MediaPlayer.create(this, R.raw.title_screen)
         mediaPlayer.start()
     }
-
-    private fun GuardarDatosEnPreferencias(){
-        val email = editTextEmail.text.toString()
-        val clave = editTextPassword.text.toString()
-        val listadoAGrabar:Pair<String,String>
-        if(checkBoxRecordarme.isChecked){
-            listadoAGrabar = email to clave
-        }
-        else{
-            listadoAGrabar ="" to ""
-        }
-        manejadorArchivo.SaveInformation(listadoAGrabar)
-    }
-
-
-    private fun LeerDatosDePreferencias(){
-        val listadoLeido = manejadorArchivo.ReadInformation()
-        if(listadoLeido.first != null){
-            checkBoxRecordarme.isChecked = true
-        }
-        editTextEmail.setText ( listadoLeido.first )
-        editTextPassword.setText ( listadoLeido.second )
-    }
-
 
     private fun ValidarDatosRequeridos():Boolean{
         val email = editTextEmail.text.toString()
@@ -95,9 +78,30 @@ class LoginActivity : AppCompatActivity() {
         }
         return true
     }
+    private fun GuardarDatosEnPreferencias(){ //Lab 04
+        val email = editTextEmail.text.toString()
+        val clave = editTextPassword.text.toString()
+        val listadoAGrabar:Pair<String,String>
+        if(checkBoxRecordarme.isChecked){
+            listadoAGrabar = email to clave
+        }
+        else{
+            listadoAGrabar ="" to ""
+        }
+        manejadorArchivo.SaveInformation(listadoAGrabar)
+    }
+
+    private fun LeerDatosDePreferencias(){ //Lab 04
+        val listadoLeido = manejadorArchivo.ReadInformation()
+        if(listadoLeido.first != null){
+            checkBoxRecordarme.isChecked = true
+        }
+        editTextEmail.setText ( listadoLeido.first )
+        editTextPassword.setText ( listadoLeido.second )
+    }
+
     override fun onDestroy() {
         mediaPlayer.release()
         super.onDestroy()
     }
-
 }

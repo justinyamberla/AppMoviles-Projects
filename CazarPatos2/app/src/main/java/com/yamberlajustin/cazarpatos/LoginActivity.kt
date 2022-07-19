@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
     lateinit var manejadorArchivo: FileHandler //Lab04
@@ -16,6 +17,17 @@ class LoginActivity : AppCompatActivity() {
     lateinit var buttonLogin: Button
     lateinit var buttonNewUser:Button
     lateinit var mediaPlayer: MediaPlayer
+
+    //----------- Examen: Expresion regular para validar correo
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,20 +70,31 @@ class LoginActivity : AppCompatActivity() {
         mediaPlayer.start()
     }
 
+    //----------- Examen: Funcion para validar Correo
+    private fun validarEmail(str: String): Boolean {
+        return EMAIL_ADDRESS_PATTERN.matcher(str).matches()
+    }
+
     private fun ValidarDatosRequeridos():Boolean{
         val email = editTextEmail.text.toString()
         val clave = editTextPassword.text.toString()
+
+        //----------- Examen: Condiciones para validar Email
         if (email.isEmpty()) {
             editTextEmail.setError("El email es obligatorio")
             editTextEmail.requestFocus()
             return false
+        }else if(!validarEmail(email)){
+            editTextEmail.setError("¡El email no es válido! Intente de nuevo")
+            editTextEmail.requestFocus()
+            return false
         }
+
         if (clave.isEmpty()) {
             editTextPassword.setError("La clave es obligatoria")
             editTextPassword.requestFocus()
             return false
-        }
-        if (clave.length < 3) {
+        } else if (clave.length < 8) {
             editTextPassword.setError("La clave debe tener al menos 3 caracteres")
             editTextPassword.requestFocus()
             return false

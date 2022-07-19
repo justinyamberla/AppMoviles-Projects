@@ -1,13 +1,13 @@
 package com.yamberlajustin.cazarpatos
 
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,10 +19,15 @@ class MainActivity : AppCompatActivity() {
     var anchoPantalla = 0
     var alturaPantalla = 0
     var gameOver = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //Inicialización de variables
+
+        ////----------- Examen: Botón Atrás para regresar a Login
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Login"
+
         textViewUsuario = findViewById(R.id.textViewUsuario)
         textViewContador = findViewById(R.id.textViewContador)
         textViewTiempo = findViewById(R.id.textViewTiempo)
@@ -31,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         //Obtener el usuario de pantalla login
         val extras = intent.extras ?: return
         val usuario = extras.getString(EXTRA_LOGIN) ?:"Unknown"
-        textViewUsuario.setText(usuario)
+
+        //----------- Examen: Capturar sólo nombre del correo
+        textViewUsuario.setText(usuario.substringBefore('@'))
 
         //Determina el ancho y largo de pantalla
         inicializarPantalla()
@@ -87,6 +94,7 @@ class MainActivity : AppCompatActivity() {
     private fun mostrarDialogoGameOver() {
         val builder = AlertDialog.Builder(this)
         builder
+            .setIcon(getResources().getDrawable(android.R.drawable.ic_dialog_info)) //Examen: Icono mensaje de alerta
             .setMessage("Felicidades!!\nHas conseguido cazar $contador patos")
             .setTitle("Fin del juego")
             .setPositiveButton("Reiniciar",
@@ -107,4 +115,5 @@ class MainActivity : AppCompatActivity() {
         moverPato()
         inicializarCuentaRegresiva()
     }
+
 }

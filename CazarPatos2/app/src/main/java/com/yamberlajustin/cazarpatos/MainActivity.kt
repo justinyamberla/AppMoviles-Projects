@@ -79,8 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
     var contadorTiempo = object : CountDownTimer(10000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            val segundosRestantes = millisUntilFinished / 1000
-            textViewTiempo.setText("${segundosRestantes}s")
+            val segundosRestantes = millisUntilFinished / 1000textViewTiempo.setText("${segundosRestantes}s")
         }
         override fun onFinish() {
             textViewTiempo.setText("0s")

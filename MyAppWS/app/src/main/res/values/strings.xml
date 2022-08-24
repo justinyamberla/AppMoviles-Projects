@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyAppWS</string>
+    <string name="textViewMensaje_texto">Sin datos</string>
+    <string name="buttonConsultarString_texto">Consultar String</string>
+    <string name="buttonConsultarJson_text">Consultar JSON</string>
+    <string name="textViewMensaje_text_error">That didn\'t work!</string>
+</resources>

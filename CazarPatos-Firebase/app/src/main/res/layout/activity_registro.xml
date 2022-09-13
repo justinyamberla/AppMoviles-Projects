@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewContrasenia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/textViewContrasenia"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textViewIsbnC"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="@+id/textViewIsbnC"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIsbnC" />
+
+    <TextView
+        android:id="@+id/textViewConfirmarContrasenia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/confirmarContrasenia"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/textViewContrasenia"
+        app:layout_constraintTop_toBottomOf="@+id/textViewContrasenia" />
+
+    <TextView
+        android:id="@+id/textViewIsbnC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/textViewEmail"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
+
+    <EditText
+        android:id="@+id/etContrasenia2R"
+        android:layout_width="255dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/hintEtContrasenia"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewConfirmarContrasenia"
+        app:layout_constraintEnd_toEndOf="@+id/etContraseniaR"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etContraseniaR"
+        app:layout_constraintTop_toTopOf="@+id/textViewConfirmarContrasenia"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/etEmailR"
+        android:layout_width="255dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="@string/hintEtEmail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewIsbnC"
+        app:layout_constraintStart_toEndOf="@+id/textViewIsbnC"
+        app:layout_constraintTop_toTopOf="@+id/textViewIsbnC"
+        app:layout_constraintVertical_bias="0.62" />
+
+    <EditText
+        android:id="@+id/etContraseniaR"
+        android:layout_width="255dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="@string/hintEtContrasenia"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewContrasenia"
+        app:layout_constraintStart_toEndOf="@+id/textViewContrasenia"
+        app:layout_constraintTop_toTopOf="@+id/textViewContrasenia"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <ImageView
+        android:id="@+id/imageViewLogin"
+        android:layout_width="158dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="92dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/duck" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="@string/btnRegistrar"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewLogin"
+        app:layout_constraintStart_toStartOf="@+id/imageViewLogin"
+        app:layout_constraintTop_toBottomOf="@+id/etContrasenia2R" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Regresar a Login"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegistrar"
+        app:layout_constraintStart_toStartOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

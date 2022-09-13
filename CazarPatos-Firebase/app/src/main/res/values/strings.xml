@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CazarPatos</string>
+    <!-- Strings related to login -->
+    <string name="textViewEmail">Email</string>
+    <string name="textViewContrasenia">Contraseña</string>
+    <string name="hintEtEmail">usuario@ejemplo.com</string>
+    <string name="hintEtContrasenia">*****</string>
+    <string name="btnLogin">Ingresar</string>
+    <string name="checkBoxRecordarme">Recordarme</string>
+    <string name="textViewRegistrarse"><u>¿No tienes una cuenta? Regístrate aquí</u></string>
+
+    <!-- Strings related to Registrar -->
+    <string name="confirmarContrasenia">Confirmar\nContraseña</string>
+    <string name="btnRegistrar">Registrar</string>
 </resources>

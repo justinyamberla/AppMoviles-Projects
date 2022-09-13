@@ -76,10 +76,23 @@ class LoginActivity : AppCompatActivity() {
             AutenticarUsuario(email, clave) // Lab 07
         }
         buttonNewUser.setOnClickListener{
-
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
         }
+
         mediaPlayer=MediaPlayer.create(this, R.raw.title_screen)
         mediaPlayer.start()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser!= null)
+        {
+            var intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(EXTRA_LOGIN, auth.currentUser!!.email)
+            startActivity(intent)
+        }
     }
 
     // Lab 07

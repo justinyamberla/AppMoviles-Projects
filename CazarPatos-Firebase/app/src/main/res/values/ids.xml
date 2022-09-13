@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnRegistrar" type="id" />
+    <item name="etEmailR" type="id" />
+    <item name="etContraseniaR" type="id" />
+    <item name="etContrasenia2R" type="id" />
+</resources>

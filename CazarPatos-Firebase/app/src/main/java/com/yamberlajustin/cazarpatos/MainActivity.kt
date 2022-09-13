@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -159,6 +160,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_ranking -> {
                 val intent = Intent(this, RankingActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_singout ->{
+                val intent = Intent(this, LoginActivity::class.java)
+                FirebaseAuth.getInstance().signOut()
                 startActivity(intent)
                 true
             }

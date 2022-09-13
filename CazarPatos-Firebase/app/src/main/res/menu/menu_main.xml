@@ -9,4 +9,7 @@
     <item
         android:id="@+id/action_ranking"
         android:title="Hall de fama" />
+    <item
+        android:id="@+id/action_singout"
+        android:title="Cerrar sesión"/>
 </menu>
